@@ -133,7 +133,7 @@ document.getElementById('week-summary').innerHTML=`
   🍽️ Middag kl. 17:00 – du er hjemme fra jobb fra kl. 16:00<br>
   ✅ <strong>Man–tir 27–28/4:</strong> OOO, god tid<br>
   ⚠️ <strong>Ons 29/4:</strong> Første dag tilbake – siste møte slutter 16:30 → rask rett<br>
-  ✅ <strong>Tor 30/4:</strong> Siste møte 15:30 → hjemme i god tid<br>
+  ⚠️ <strong>Tor 30/4:</strong> Møte 16:30–17:30 Oslo-tid → rask rett<br>
   🎉 <strong>Fre 1. mai:</strong> Nasjonal fridag – noe festlig i stedet for taco<br>
   🌮 <strong>Lør 2. mai:</strong> Tacokveld flyttes hit`;
 
@@ -153,11 +153,11 @@ const menu=[
    name:'Pasta med fetaost og hermetiske tomater',time:'15 min · 3 ingredienser · Barnevennlig',
    link:'https://meny.no/oppskrifter/pasta/baked-feta-pasta',
    ing:'Pasta, hermetiske tomater, fetaost, hvitløk, olivenolje, basilikum'},
-  {abbr:'Tor',num:'30',mon:'apr',tag:'tag-fish',label:'Fisk',busy:false,holiday:false,
-   calNote:'✅ Siste møte 15:30 → hjemme i god tid',calCls:'ok',
-   name:'Grønn risotto med scampi',time:'30 min · Litt ekstra kjærlighet',
-   link:'https://www.rema.no/oppskrifter/ris/gronn-risotto-med-scampi/',
-   ing:'Scampi, risottoris, erter, spinat, løk, hvitløk, buljong, parmesan, smør, sitron'},
+  {abbr:'Tor',num:'30',mon:'apr',tag:'tag-fish',label:'Fisk',busy:true,holiday:false,
+   calNote:'⚠️ Weekly VD Acceleration 16:30–17:30 Oslo-tid → rask rett!',calCls:'warn',
+   name:'Laksepudding med poteter og gulrøtter',time:'20 min aktiv + hviler i ovn · Klassisk norsk',
+   link:'https://www.tine.no/oppskrifter/middag-og-hovedretter/fisk-og-skalldyr/laksepudding-med-poteter',
+   ing:'Laks (fryst ok), egg, melk, mel, poteter, gulrøtter, smør, salt, pepper'},
   {abbr:'Fre',num:'1',mon:'mai',tag:'tag-holiday',label:'Fridag 🎉',busy:false,holiday:true,
    calNote:'🟢 1. mai – nasjonal fridag! Feirer med noe festlig',calCls:'ok',
    name:'Kyllingbowl med søtpotet og quinoa',time:'30 min · Fargerikt og festlig',
@@ -198,7 +198,7 @@ function toggleCard(i){document.getElementById('card-'+i).classList.toggle('open
 const shopCats=[
   {name:'Kjøtt & fisk',items:[
     {n:'Kyllingfilet 700g',q:'kyllingfilet',f:'weekly'},
-    {n:'Scampi 270g fiskemannen',q:'scampi fiskemannen',f:'weekly'},
+    {n:'Laks fryst 500g',q:'laks fryst',f:'weekly'},
   ]},
   {name:'Meieri & egg',items:[
     {n:'Lettmelk 0,5% Tine 1l × 2',q:'lettmelk tine',f:'weekly'},
@@ -227,7 +227,7 @@ const shopCats=[
   ]},
   {name:'Tørrvarer & hermetikk',items:[
     {n:'Pasta penne 500g',q:'pasta penne',f:'weekly'},
-    {n:'Risottoris arborio 500g',q:'risottoris',f:'weekly'},
+    {n:'Gulrøtter 1 kg',q:'gulrøtter',f:'weekly'},
     {n:'Quinoa 400g',q:'quinoa',f:'weekly'},
     {n:'Ris 500g',q:'ris',f:'weekly'},
     {n:'Hermetiske tomater 2 boks',q:'hermetiske tomater',f:'weekly'},
