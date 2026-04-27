@@ -1,0 +1,39 @@
+name: Generer ukemeny
+
+on:
+  schedule:
+    # Lørdag kl. 10:00 Oslo-tid (08:00 UTC sommertid)
+    - cron: '0 8 * * 6'
+  workflow_dispatch: # Tillat manuell kjøring
+
+jobs:
+  generer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+
+      - name: Sett opp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installer avhengigheter
+        run: pip install anthropic google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client requests
+
+      - name: Generer ny ukemeny
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: python generate_menu.py
+
+      - name: Publiser oppdatert side
+        run: |
+          git config user.name "Ukemeny Bot"
+          git config user.email "bot@ukemeny"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Ukemeny uke $(date +%V) – auto-generert $(date +%Y-%m-%d)"
+          git push
