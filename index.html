@@ -7,12 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream:#FAF7F2;--paper:#F3EEE6;--ink:#1C1A17;--ink-muted:#6B6559;--ink-light:#A09890;
-    --green:#2D5016;--green-bg:#EAF0E0;--orange:#C4521A;--orange-bg:#FAF0E8;
-    --blue:#1A3A5C;--blue-bg:#E8EFF6;--amber:#8C5E00;--amber-bg:#FBF3E0;
-    --red:#8B2020;--red-bg:#FCEBEB;--border:rgba(28,26,23,0.1);--radius:12px;
-  }
+  :root{--cream:#FAF7F2;--paper:#F3EEE6;--ink:#1C1A17;--ink-muted:#6B6559;--ink-light:#A09890;--green:#2D5016;--green-bg:#EAF0E0;--orange:#C4521A;--orange-bg:#FAF0E8;--blue:#1A3A5C;--blue-bg:#E8EFF6;--amber:#8C5E00;--amber-bg:#FBF3E0;--red:#8B2020;--red-bg:#FCEBEB;--purple:#3C2A6B;--purple-bg:#EEEDFE;--border:rgba(28,26,23,0.1);--radius:12px;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
   header{background:var(--ink);color:var(--cream);padding:2rem 1.5rem 1.5rem;}
@@ -27,36 +22,55 @@
   .tab-panel{display:none;}.tab-panel.active{display:block;}
   .week-summary{background:white;border:0.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:13px;line-height:1.9;color:var(--ink-muted);}
   .week-summary strong{color:var(--ink);}
+
+  /* DAY CARDS */
   .day-card{background:white;border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:0.85rem;overflow:hidden;transition:box-shadow 0.2s;}
   .day-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.07);}
-  .day-card.busy{border-left:3px solid #E24B4A;border-radius:0 var(--radius) var(--radius) 0;}
+  .day-card.late{border-left:3px solid #E24B4A;border-radius:0 var(--radius) var(--radius) 0;}
+  .day-card.precook{border-left:3px solid #8C5E00;border-radius:0 var(--radius) var(--radius) 0;}
   .day-card.holiday{border-left:3px solid #1D9E75;border-radius:0 var(--radius) var(--radius) 0;}
+  .day-card.ooo{border-left:3px solid #7F77DD;border-radius:0 var(--radius) var(--radius) 0;}
   .card-top{display:grid;grid-template-columns:68px 1fr auto;align-items:center;gap:1rem;padding:1.1rem 1.25rem;cursor:pointer;}
   .day-col{text-align:center;}
   .day-abbr{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);}
   .day-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:300;line-height:1;color:var(--ink);}
   .day-mon{font-size:10px;color:var(--ink-light);}
   .dish-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.05em;}
-  .tag-poultry{background:#EEEDFE;color:#3C3489;}
+  .tag-poultry{background:var(--purple-bg);color:var(--purple);}
   .tag-fish{background:var(--blue-bg);color:var(--blue);}
   .tag-veg{background:var(--green-bg);color:var(--green);}
   .tag-soup{background:var(--amber-bg);color:var(--amber);}
   .tag-taco{background:var(--orange-bg);color:var(--orange);}
   .tag-weekend{background:var(--paper);color:var(--ink-muted);}
   .tag-holiday{background:var(--green-bg);color:var(--green);}
+  .tag-ooo{background:var(--purple-bg);color:var(--purple);}
   .dish-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;line-height:1.3;color:var(--ink);}
   .dish-time{font-size:11px;color:var(--ink-light);margin-top:3px;}
   .expand-icon{font-size:16px;color:var(--ink-light);transition:transform 0.25s;}
   .day-card.open .expand-icon{transform:rotate(180deg);}
   .card-body{display:none;border-top:0.5px solid var(--border);padding:1rem 1.25rem;background:var(--paper);}
   .day-card.open .card-body{display:block;}
-  .cal-note{font-size:12px;background:white;border-radius:8px;padding:5px 10px;margin-bottom:10px;border:0.5px solid var(--border);color:var(--ink-muted);}
+  .cal-note{font-size:12px;background:white;border-radius:8px;padding:6px 10px;margin-bottom:10px;border:0.5px solid var(--border);color:var(--ink-muted);line-height:1.6;}
   .cal-note.warn{border-color:rgba(226,75,74,0.3);background:var(--red-bg);color:var(--red);}
   .cal-note.ok{border-color:rgba(29,158,117,0.3);background:var(--green-bg);color:var(--green);}
+  .cal-note.precook{border-color:rgba(140,94,0,0.3);background:var(--amber-bg);color:var(--amber);}
+  .cal-note.ooo{border-color:rgba(127,119,221,0.3);background:var(--purple-bg);color:var(--purple);}
   .ing-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-light);margin-bottom:5px;}
   .ing-list{font-size:13px;color:var(--ink-muted);line-height:1.8;margin-bottom:1rem;}
   .recipe-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--orange);text-decoration:none;border:0.5px solid currentColor;border-radius:20px;padding:5px 12px;transition:all 0.15s;}
   .recipe-link:hover{background:var(--orange);color:white;}
+
+  /* LEGEND */
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem;}
+  .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-muted);}
+  .legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+  .dot-ok{background:var(--green);}
+  .dot-warn{background:#E24B4A;}
+  .dot-precook{background:var(--amber);}
+  .dot-ooo{background:#7F77DD;}
+  .dot-holiday{background:#1D9E75;}
+
+  /* SHOP */
   .shop-section{margin-bottom:1.25rem;}
   .section-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-light);margin-bottom:8px;padding-left:2px;}
   .shop-items{background:white;border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;}
@@ -72,7 +86,7 @@
   .shop-item.checked .item-name{text-decoration:line-through;color:var(--ink-light);}
   .freq-pill{font-size:10px;font-weight:500;padding:2px 6px;border-radius:10px;white-space:nowrap;}
   .freq-weekly{background:var(--green-bg);color:var(--green);}
-  .freq-biweekly{background:#EEEDFE;color:#3C3489;}
+  .freq-biweekly{background:var(--purple-bg);color:var(--purple);}
   .freq-monthly{background:var(--amber-bg);color:var(--amber);}
   .meny-btn{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:var(--blue);background:var(--blue-bg);border-radius:7px;padding:3px 8px;text-decoration:none;white-space:nowrap;transition:all 0.15s;}
   .meny-btn:hover{background:var(--blue);color:white;}
@@ -96,6 +110,13 @@
 </header>
 <main>
   <div class="tab-panel active" id="tab-menu">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot dot-ok"></div> Fri fra 16:00</div>
+      <div class="legend-item"><div class="legend-dot dot-warn"></div> Sent møte – rask rett</div>
+      <div class="legend-item"><div class="legend-dot dot-precook"></div> Forebered dagen før</div>
+      <div class="legend-item"><div class="legend-dot dot-ooo"></div> OOO / ferie</div>
+      <div class="legend-item"><div class="legend-dot dot-holiday"></div> Fridag</div>
+    </div>
     <div class="week-summary" id="week-summary"></div>
     <div id="days-container"></div>
   </div>
@@ -130,55 +151,65 @@ document.getElementById('week-meta').textContent=`Uke ${weekNum} · ${fmt(monday
 
 document.getElementById('week-summary').innerHTML=`
   <strong>Uke 18 · 27. april – 3. mai</strong><br>
-  🍽️ Middag kl. 17:00 – du er hjemme fra jobb fra kl. 16:00<br>
-  ✅ <strong>Man–tir 27–28/4:</strong> OOO, god tid<br>
-  ⚠️ <strong>Ons 29/4:</strong> Første dag tilbake – siste møte slutter 16:30 → rask rett<br>
-  ⚠️ <strong>Tor 30/4:</strong> Møte 16:30–17:30 Oslo-tid → rask rett<br>
-  🎉 <strong>Fre 1. mai:</strong> Nasjonal fridag – noe festlig i stedet for taco<br>
-  🌮 <strong>Lør 2. mai:</strong> Tacokveld flyttes hit`;
+  🌴 <strong>Man 27/4:</strong> Fortsatt i Portugal – middag ute på restaurant. Ingen matlaging!<br>
+  ✅ <strong>Tir 28/4:</strong> OOO siste dag, fri ettermiddag → perfekt til å foreberede torsdagens gryte<br>
+  ⚠️ <strong>Ons 29/4:</strong> Tilbake på jobb · siste møte 16:00–16:30 → rask pasta<br>
+  🟠 <strong>Tor 30/4:</strong> Møte 16:30–17:30 → forebredt tirsdag kveld, varm opp bare<br>
+  🎉 <strong>Fre 1. mai:</strong> Fridag – noe festlig<br>
+  🌮 <strong>Lør 2. mai:</strong> Taco flyttes hit<br>
+  😌 <strong>Søn 3. mai:</strong> Enkel helgemiddag`;
 
+// cardCls: '', 'late', 'precook', 'holiday', 'ooo'
 const menu=[
-  {abbr:'Man',num:'27',mon:'apr',tag:'tag-poultry',label:'Kylling',busy:false,holiday:false,
-   calNote:'✅ OOO – god tid · Family time 16:30',calCls:'ok',
-   name:'Creamy one pot med kylling og tomater',time:'25 min · One pot · Ingen oppvask',
-   link:'https://oda.com/no/recipes/4806-ida-gran-jansen-creamy-one-pot-med-kylling-og-tomater/',
-   ing:'Kyllingfilet, hermetiske tomater, fløte, pasta, løk, hvitløk, basilikum, parmesan'},
-  {abbr:'Tir',num:'28',mon:'apr',tag:'tag-soup',label:'Suppe',busy:false,holiday:false,
-   calNote:'✅ OOO siste dag – god tid · Family time 16:30',calCls:'ok',
+  {abbr:'Man',num:'27',mon:'apr',tag:'tag-ooo',label:'Ferie 🌴',cardCls:'ooo',
+   calNote:'🌴 Du er i Portugal! Middag ute – Reservation at O Terraço, Sagres kl. 19:15',calCls:'ooo',
+   name:'Middag ute – ingen matlaging i dag',time:'Nyt ferien! 🥂',
+   link:null,ing:null},
+  {abbr:'Tir',num:'28',mon:'apr',tag:'tag-ooo',label:'OOO – siste dag',cardCls:'ooo',
+   calNote:'✅ OOO · Fri ettermiddag → bruk kvelden til å foreberede torsdagens gryte!',calCls:'ok',
    name:'Kremet soppsuppe med godt brød',time:'25 min · Enkel og mettende',
    link:'https://meny.no/oppskrifter/suppe/Kremet-soppsuppe/',
-   ing:'Sjampinjong 400g, løk, hvitløk, fløte, smør, buljong, timian, soyasaus, grovt brød'},
-  {abbr:'Ons',num:'29',mon:'apr',tag:'tag-veg',label:'Vegetar',busy:true,holiday:false,
-   calNote:'⚠️ Første dag tilbake · Siste møte 16:00–16:30 → rask rett!',calCls:'warn',
+   ing:'Sjampinjong 400g, løk, hvitløk, fløte, smør, buljong, timian, soyasaus, grovt brød',
+   prepNote:'🟠 Forbered tirsdag kveld: Lag chili sin carne til torsdag. Kjøl ned og sett i kjøleskap.'},
+  {abbr:'Ons',num:'29',mon:'apr',tag:'tag-veg',label:'Vegetar',cardCls:'late',
+   calNote:'⚠️ Siste møte 16:00–16:30 Oslo-tid → rask rett, maks 15 min',calCls:'warn',
    name:'Pasta med fetaost og hermetiske tomater',time:'15 min · 3 ingredienser · Barnevennlig',
    link:'https://meny.no/oppskrifter/pasta/baked-feta-pasta',
    ing:'Pasta, hermetiske tomater, fetaost, hvitløk, olivenolje, basilikum'},
-  {abbr:'Tor',num:'30',mon:'apr',tag:'tag-fish',label:'Fisk',busy:true,holiday:false,
-   calNote:'⚠️ Weekly VD Acceleration 16:30–17:30 Oslo-tid → rask rett!',calCls:'warn',
-   name:'Laksepudding med poteter og gulrøtter',time:'20 min aktiv + hviler i ovn · Klassisk norsk',
-   link:'https://www.tine.no/oppskrifter/middag-og-hovedretter/fisk-og-skalldyr/laksepudding-med-poteter',
-   ing:'Laks (fryst ok), egg, melk, mel, poteter, gulrøtter, smør, salt, pepper'},
-  {abbr:'Fre',num:'1',mon:'mai',tag:'tag-holiday',label:'Fridag 🎉',busy:false,holiday:true,
-   calNote:'🟢 1. mai – nasjonal fridag! Feirer med noe festlig',calCls:'ok',
+  {abbr:'Tor',num:'30',mon:'apr',tag:'tag-veg',label:'Vegetar – forebredt',cardCls:'precook',
+   calNote:'🟠 Møte 16:30–17:30 Oslo-tid → forebredt tirsdag kveld. Varm opp i gryte – 10 min!',calCls:'precook',
+   name:'Chili sin carne med ris og rømme',time:'10 min å varme opp · Laget dagen før',
+   link:'https://meny.no/oppskrifter/vegetar/Chili-sin-carne/',
+   ing:'Kidneybønner, hermetiske tomater, mais, løk, paprika, hvitløk, tacokrydder, ris, rømme'},
+  {abbr:'Fre',num:'1',mon:'mai',tag:'tag-holiday',label:'Fridag 🎉',cardCls:'holiday',
+   calNote:'🟢 1. mai – nasjonal fridag! God tid til noe festlig',calCls:'ok',
    name:'Kyllingbowl med søtpotet og quinoa',time:'30 min · Fargerikt og festlig',
    link:'https://meny.no/oppskrifter/kylling/kyllingbowl-med-sotpotet',
    ing:'Kyllingfilet, søtpotet, quinoa, avokado, rødkål, limejuice, koriander, tacokrydder, rømme'},
-  {abbr:'Lør',num:'2',mon:'mai',tag:'tag-taco',label:'Taco 🌮',busy:false,holiday:false,
-   calNote:'😌 Helg · Tacokveld flyttes hit fra fredag',calCls:'',
+  {abbr:'Lør',num:'2',mon:'mai',tag:'tag-taco',label:'Taco 🌮',cardCls:'',
+   calNote:'😌 Helg · Fredagstaco flyttes hit',calCls:'',
    name:'Tacobowl med cottage cheese',time:'25 min · Fredagsklassiker på lørdag',
    link:'https://meny.no/oppskrifter/taco/tacobowl-med-cottage-cheese',
    ing:'Kjøttdeig, tacokrydder, cottage cheese, rømme, mais, salsa, ost, salat, tomat, tortillachips'},
-  {abbr:'Søn',num:'3',mon:'mai',tag:'tag-weekend',label:'Helg',busy:false,holiday:false,
+  {abbr:'Søn',num:'3',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
    calNote:'😌 Avslappet søndag',calCls:'',
-   name:'Chili sin carne med ris og rømme',time:'30 min · Mettende · Barnevennlig',
-   link:'https://meny.no/oppskrifter/vegetar/Chili-sin-carne/',
-   ing:'Kidneybønner, hermetiske tomater, mais, løk, paprika, hvitløk, tacokrydder, ris, rømme'},
+   name:'Laksepudding med poteter og gulrøtter',time:'30 min · Klassisk norsk',
+   link:'https://www.tine.no/oppskrifter/middag-og-hovedretter/fisk-og-skalldyr/laksepudding-med-poteter',
+   ing:'Laks (fryst ok), egg, melk, mel, poteter, gulrøtter, smør, salt, pepper'},
 ];
 
 const dc=document.getElementById('days-container');
 const chk=`<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
 menu.forEach((d,i)=>{
-  const cc=['day-card',d.holiday?'holiday':d.busy?'busy':''].filter(Boolean).join(' ');
+  const cc=['day-card',d.cardCls].filter(Boolean).join(' ');
+  const bodyContent = d.ing ? `
+    ${d.prepNote ? `<div class="cal-note precook">${d.prepNote}</div>` : ''}
+    <div class="ing-label">Ingredienser</div>
+    <div class="ing-list">${d.ing}</div>
+    ${d.link ? `<a class="recipe-link" href="${d.link}" target="_blank">Åpne oppskrift →</a>` : ''}
+  ` : `<div style="font-size:13px;color:var(--ink-muted)">Ingen oppskrift denne dagen – nyt!</div>`;
+
   dc.innerHTML+=`<div class="${cc}" id="card-${i}">
     <div class="card-top" onclick="toggleCard(${i})">
       <div class="day-col"><div class="day-abbr">${d.abbr}</div><div class="day-num">${d.num}</div><div class="day-mon">${d.mon}</div></div>
@@ -187,39 +218,38 @@ menu.forEach((d,i)=>{
     </div>
     <div class="card-body">
       <div class="cal-note ${d.calCls}">${d.calNote}</div>
-      <div class="ing-label">Ingredienser</div>
-      <div class="ing-list">${d.ing}</div>
-      <a class="recipe-link" href="${d.link}" target="_blank">Åpne oppskrift →</a>
+      ${bodyContent}
     </div>
   </div>`;
 });
+
 function toggleCard(i){document.getElementById('card-'+i).classList.toggle('open');}
 
 const shopCats=[
   {name:'Kjøtt & fisk',items:[
     {n:'Kyllingfilet 700g',q:'https://meny.no/varer/kylling-og-fjaerkre/kylling/kyllingfilet',f:'weekly'},
     {n:'Laks fryst 500g',q:'https://meny.no/varer/fisk-og-skalldyr/laks',f:'weekly'},
+    {n:'Kjøttdeig 400g',q:'https://meny.no/varer/kjott/karbonader-og-kjoettdeig/kjoettdeig',f:'weekly'},
   ]},
   {name:'Meieri & egg',items:[
     {n:'Lettmelk 0,5% Tine 1l × 2',q:'https://meny.no/varer/meieri-ost-og-egg/melk/lettmelk',f:'weekly'},
-    {n:'Fløte 38%',q:'https://meny.no/varer/meieri-ost-og-egg/fløte-og-rømme/fløte',f:'weekly'},
-    {n:'Smør Tine 500g',q:'https://meny.no/varer/meieri-ost-og-egg/smør-og-margarin/smør',f:'monthly'},
+    {n:'Fløte 38%',q:'https://meny.no/varer/meieri-ost-og-egg/floete-og-romme/floete',f:'weekly'},
+    {n:'Smør Tine 500g',q:'https://meny.no/varer/meieri-ost-og-egg/smor-og-margarin/smor',f:'monthly'},
     {n:'Egg 10-pk',q:'https://meny.no/varer/meieri-ost-og-egg/egg',f:'biweekly'},
-    {n:'Parmesan revet',q:'https://meny.no/varer/meieri-ost-og-egg/ost/parmesan',f:'weekly'},
     {n:'Fetaost 200g',q:'https://meny.no/varer/meieri-ost-og-egg/ost/fetaost',f:'weekly'},
     {n:'Cottage cheese 2% 400g',q:'https://meny.no/varer/meieri-ost-og-egg/cottage-cheese',f:'weekly'},
-    {n:'Rømme',q:'https://meny.no/varer/meieri-ost-og-egg/fløte-og-rømme/rømme',f:'weekly'},
+    {n:'Rømme',q:'https://meny.no/varer/meieri-ost-og-egg/floete-og-romme/romme',f:'weekly'},
   ]},
   {name:'Grønnsaker & frukt',items:[
     {n:'Sjampinjong 400g',q:'https://meny.no/varer/frukt-og-gront/sopp/sjampinjong',f:'weekly'},
-    {n:'Søtpotet',q:'https://meny.no/varer/frukt-og-gront/rotfrukter/søtpotet',f:'weekly'},
-    {n:'Spinat fersk',q:'https://meny.no/varer/frukt-og-gront/salat/spinat',f:'weekly'},
-    {n:'Paprika rød 3 stk',q:'https://meny.no/varer/frukt-og-gront/paprika/rød-paprika',f:'weekly'},
-    {n:'Løk 4 stk',q:'https://meny.no/varer/frukt-og-gront/løk',f:'weekly'},
-    {n:'Hvitløk',q:'https://meny.no/varer/frukt-og-gront/løk/hvitløk',f:'weekly'},
-    {n:'Cherrytomater 2 pk',q:'https://meny.no/varer/frukt-og-gront/tomater/cherrytomater',f:'weekly'},
-    {n:'Avokado 2 stk',q:'https://meny.no/varer/frukt-og-gront/eksotisk-frukt/avokado',f:'weekly'},
+    {n:'Søtpotet',q:'https://meny.no/varer/frukt-og-gront/rotfrukter/sotpotet',f:'weekly'},
+    {n:'Paprika rød 3 stk',q:'https://meny.no/varer/frukt-og-gront/paprika/rod-paprika',f:'weekly'},
+    {n:'Løk 4 stk',q:'https://meny.no/varer/frukt-og-gront/lok',f:'weekly'},
+    {n:'Hvitløk',q:'https://meny.no/varer/frukt-og-gront/lok/hvitlok',f:'weekly'},
     {n:'Gulrøtter 1 kg',q:'https://meny.no/varer/frukt-og-gront/rotfrukter/gulrot',f:'weekly'},
+    {n:'Poteter 1 kg',q:'https://meny.no/varer/frukt-og-gront/poteter',f:'weekly'},
+    {n:'Avokado 2 stk',q:'https://meny.no/varer/frukt-og-gront/eksotisk-frukt/avokado',f:'weekly'},
+    {n:'Cherrytomater 2 pk',q:'https://meny.no/varer/frukt-og-gront/tomater/cherrytomater',f:'weekly'},
     {n:'Sitron 2 stk',q:'https://meny.no/varer/frukt-og-gront/sitrusfrukter/sitron',f:'weekly'},
     {n:'Bananer',q:'https://meny.no/varer/frukt-og-gront/banan',f:'weekly'},
     {n:'Epler røde',q:'https://meny.no/varer/frukt-og-gront/epler',f:'weekly'},
@@ -233,29 +263,28 @@ const shopCats=[
     {n:'Hermetiske tomater 2 boks',q:'https://meny.no/varer/kolonial/hermetikk/hermetiske-tomater',f:'weekly'},
     {n:'Kidneybønner 1 boks',q:'https://meny.no/varer/kolonial/hermetikk/bønner',f:'weekly'},
     {n:'Mais hermetikk',q:'https://meny.no/varer/kolonial/hermetikk/mais',f:'weekly'},
-    {n:'Frosne erter 400g',q:'https://meny.no/varer/frysevarer/grønnsaker/erter',f:'weekly'},
     {n:'Tacokrydder',q:'https://meny.no/varer/kolonial/krydder-og-smakstilsetninger/tacokrydder',f:'weekly'},
     {n:'Salsa',q:'https://meny.no/varer/kolonial/sauser-og-dressinger/salsa',f:'weekly'},
     {n:'Tortillachips',q:'https://meny.no/varer/snacks/chips/tortillachips',f:'weekly'},
     {n:'Kyllingbuljong',q:'https://meny.no/varer/kolonial/suppe-og-buljong/buljong',f:'monthly'},
-    {n:'Soyasaus',q:'https://meny.no/varer/kolonial/sauser-og-dressinger/soyasaus',f:'monthly'},
     {n:'Olivenolje',q:'https://meny.no/varer/kolonial/oljer-og-eddik/olivenolje',f:'monthly'},
   ]},
   {name:'Brød',items:[
-    {n:'Grovt brød',q:'https://meny.no/varer/bakervarer/brød/grovbrød',f:'weekly'},
-    {n:'Knekkebrød',q:'https://meny.no/varer/bakervarer/knekkebrød',f:'weekly'},
+    {n:'Grovt brød',q:'https://meny.no/varer/bakervarer/brod/grovbrod',f:'weekly'},
+    {n:'Knekkebrød',q:'https://meny.no/varer/bakervarer/knekkebrод',f:'weekly'},
   ]},
 ];
+
 const fixedCats=[
   {name:'Alltid hjemme',items:[
-    {n:'Jordbærsyltetøy',q:'https://meny.no/varer/kolonial/syltetøy-og-pålegg/syltetøy',f:'monthly'},
-    {n:'Bringebærsyltetøy',q:'https://meny.no/varer/kolonial/syltetøy-og-pålegg/syltetøy',f:'monthly'},
+    {n:'Jordbærsyltetøy',q:'https://meny.no/varer/kolonial/syltetoy-og-paalegg/syltetoy',f:'monthly'},
+    {n:'Bringebærsyltetøy',q:'https://meny.no/varer/kolonial/syltetoy-og-paalegg/syltetoy',f:'monthly'},
     {n:'Brunost G35',q:'https://meny.no/varer/meieri-ost-og-egg/ost/brunost',f:'biweekly'},
     {n:'Kaviar tube',q:'https://meny.no/varer/fisk-og-skalldyr/kaviar-og-rogn',f:'biweekly'},
     {n:'Leverpostei',q:'https://meny.no/varer/paaleg/leverpostei',f:'biweekly'},
     {n:'Appelsinjuice',q:'https://meny.no/varer/drikke/juice/appelsinjuice',f:'weekly'},
     {n:'Yoghurt med frukt (barn)',q:'https://meny.no/varer/meieri-ost-og-egg/yoghurt',f:'weekly'},
-    {n:'Müsli / havregryn',q:'https://meny.no/varer/kolonial/frokostblandinger/müsli',f:'weekly'},
+    {n:'Müsli / havregryn',q:'https://meny.no/varer/kolonial/frokostblandinger/musli',f:'weekly'},
     {n:'Riskaker',q:'https://meny.no/varer/snacks/kjeks-og-riskaker/riskaker',f:'biweekly'},
     {n:'Koljekaker 95g × 2',q:'https://meny.no/varer/fisk-og-skalldyr/fiskekaker-og-fiskeprodukter',f:'biweekly'},
   ]},
@@ -264,24 +293,26 @@ const fixedCats=[
     {n:'Libero bleier str. 4',q:'https://meny.no/varer/baby-og-barn/bleier',f:'monthly'},
   ]},
 ];
+
 const freqLabel={weekly:'Ukentlig',biweekly:'2 uker',monthly:'Månedlig'};
 const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly'};
-const menyUrl=q=>q; // URLs are now direct links
+
 function renderShop(cats,cid){
   const el=document.getElementById(cid);
   cats.forEach(cat=>{
     const rows=cat.items.map((item,j)=>{
-      const id=`${cid}-${j}`;
+      const id=`${cid}-${j}-${cat.name.replace(/\s/g,'')}`;
       return `<div class="shop-item" id="${id}" onclick="toggleItem('${id}')">
         <div class="check-c">${chk}</div>
         <span class="item-name">${item.n}</span>
         <span class="freq-pill ${freqCls[item.f]}">${freqLabel[item.f]}</span>
-        <a class="meny-btn" href="${menyUrl(item.q)}" target="_blank" onclick="event.stopPropagation()">🛒 Meny</a>
+        <a class="meny-btn" href="${item.q}" target="_blank" onclick="event.stopPropagation()">🛒 Meny</a>
       </div>`;
     }).join('');
     el.innerHTML+=`<div class="shop-section"><div class="section-title">${cat.name}</div><div class="shop-items">${rows}</div></div>`;
   });
 }
+
 renderShop(shopCats,'shop-container');
 renderShop(fixedCats,'fixed-container');
 function toggleItem(id){document.getElementById(id).classList.toggle('checked');}
