@@ -152,9 +152,9 @@ document.getElementById('week-meta').textContent=`Uke ${weekNum} · ${fmt(monday
 document.getElementById('week-summary').innerHTML=`
   <strong>Uke 18 · 27. april – 3. mai</strong><br>
   🌴 <strong>Man 27/4:</strong> Fortsatt i Portugal – middag ute på restaurant. Ingen matlaging!<br>
-  ✅ <strong>Tir 28/4:</strong> OOO siste dag, fri ettermiddag → perfekt til å foreberede torsdagens gryte<br>
-  ⚠️ <strong>Ons 29/4:</strong> Tilbake på jobb · siste møte 16:00–16:30 → rask pasta<br>
-  🟠 <strong>Tor 30/4:</strong> Møte 16:30–17:30 → forebredt tirsdag kveld, varm opp bare<br>
+  ✈️ <strong>Tir 28/4:</strong> Flyr hjem – tom kjøleskap, takeaway på veien<br>
+  ⚠️ <strong>Ons 29/4:</strong> Første dag hjemme · tom kjøleskap · møte 16:00–16:30 → kun hyllevarer<br>
+  🟠 <strong>Tor 30/4:</strong> Møte 16:30–17:30 → handle onsdag, forbered onsdag kveld, varm opp bare<br>
   🎉 <strong>Fre 1. mai:</strong> Fridag – noe festlig<br>
   🌮 <strong>Lør 2. mai:</strong> Taco flyttes hit<br>
   😌 <strong>Søn 3. mai:</strong> Enkel helgemiddag`;
@@ -165,17 +165,16 @@ const menu=[
    calNote:'🌴 Du er i Portugal! Middag ute – Reservation at O Terraço, Sagres kl. 19:15',calCls:'ooo',
    name:'Middag ute – ingen matlaging i dag',time:'Nyt ferien! 🥂',
    link:null,ing:null},
-  {abbr:'Tir',num:'28',mon:'apr',tag:'tag-ooo',label:'OOO – siste dag',cardCls:'ooo',
-   calNote:'✅ OOO · Fri ettermiddag → bruk kvelden til å foreberede torsdagens gryte!',calCls:'ok',
-   name:'Kremet soppsuppe med godt brød',time:'25 min · Enkel og mettende',
-   link:'https://meny.no/oppskrifter/suppe/Kremet-soppsuppe/',
-   ing:'Sjampinjong 400g, løk, hvitløk, fløte, smør, buljong, timian, soyasaus, grovt brød',
-   prepNote:'🟠 Forbered tirsdag kveld: Lag chili sin carne til torsdag. Kjøl ned og sett i kjøleskap.'},
+  {abbr:'Tir',num:'28',mon:'apr',tag:'tag-ooo',label:'Ferie – reiser hjem ✈️',cardCls:'ooo',
+   calNote:'✈️ Flyr hjem fra Portugal – kommer sent hjem med tom kjøleskap. Ingen matlaging i dag!',calCls:'ooo',
+   name:'Takeaway eller pizza på veien hjem',time:'0 min · Bestill på veien',
+   link:null,ing:null},
   {abbr:'Ons',num:'29',mon:'apr',tag:'tag-veg',label:'Vegetar',cardCls:'late',
-   calNote:'⚠️ Siste møte 16:00–16:30 Oslo-tid → rask rett, maks 15 min',calCls:'warn',
-   name:'Pasta med fetaost og hermetiske tomater',time:'15 min · 3 ingredienser · Barnevennlig',
+   calNote:'⚠️ Tom kjøleskap fra ferie + møte 16:00–16:30 → kun hyllevarer, ingen handling nødvendig!',calCls:'warn',
+   name:'Pasta med hermetiske tomater og fetaost',time:'15 min · Kun hyllevarer · Tom-kjøleskap-redder',
    link:'https://meny.no/oppskrifter/pasta/baked-feta-pasta',
-   ing:'Pasta, hermetiske tomater, fetaost, hvitløk, olivenolje, basilikum'},
+   ing:'Pasta (fra skap), hermetiske tomater (fra skap), fetaost (holder seg), hvitløk, olivenolje, tørr basilikum',
+   prepNote:'💡 Tips: Kjøp fetaost og pasta på flyplassen eller kiosk på veien hjem tirsdag!'},
   {abbr:'Tor',num:'30',mon:'apr',tag:'tag-veg',label:'Vegetar – forebredt',cardCls:'precook',
    calNote:'🟠 Møte 16:30–17:30 Oslo-tid → forebredt tirsdag kveld. Varm opp i gryte – 10 min!',calCls:'precook',
    name:'Chili sin carne med ris og rømme',time:'10 min å varme opp · Laget dagen før',
