@@ -87,7 +87,7 @@
   .freq-pill{font-size:10px;font-weight:500;padding:2px 6px;border-radius:10px;white-space:nowrap;}
   .freq-weekly{background:var(--green-bg);color:var(--green);}
   .freq-biweekly{background:var(--purple-bg);color:var(--purple);}
-  .freq-monthly{background:var(--amber-bg);color:var(--amber);}
+  .freq-monthly{background:var(--amber-bg);color:var(--amber);}.freq-triweekly{background:var(--orange-bg);color:var(--orange);}
   .meny-btn{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:500;color:var(--blue);background:var(--blue-bg);border-radius:7px;padding:3px 8px;text-decoration:none;white-space:nowrap;transition:all 0.15s;}
   .meny-btn:hover{background:var(--blue);color:white;}
   .freq-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1rem;}
@@ -133,6 +133,7 @@
       <span class="freq-pill freq-weekly">Ukentlig</span>
       <span class="freq-pill freq-biweekly">Annenhver uke</span>
       <span class="freq-pill freq-monthly">Månedlig</span>
+      <span class="freq-pill freq-triweekly">Hver 3. uke</span>
     </div>
     <div id="fixed-container"></div>
   </div>
@@ -285,13 +286,14 @@ const fixedCats=[
         {n:'Koljekaker 95g × 2',q:'https://meny.no/varer/fisk-skalldyr/fiskekaker-og-fiskeprodukter',f:'biweekly'},
   ]},
   {name:'Bleier & hygiene',items:[
-    {n:'Libero trusebleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'monthly'},
-    {n:'Libero bleier str. 4',q:'https://meny.no/varer/barneprodukter/bleier',f:'monthly'},
-  ]},
+    {n:'Libero trusebleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'weekly'},
+    {n:'Libero open bleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'biweekly'},
+    {n:'Libero open bleier str. 8',q:'https://meny.no/varer/barneprodukter/bleier',f:'triweekly'},
+          ]},
 ];
 
-const freqLabel={weekly:'Ukentlig',biweekly:'2 uker',monthly:'Månedlig'};
-const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly'};
+const freqLabel={weekly:'Ukentlig',biweekly:'Annenhver uke',monthly:'Månedlig',triweekly:'Hver 3. uke'};
+const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly',triweekly:'freq-triweekly'};
 
 function renderShop(cats,cid){
   const el=document.getElementById(cid);
