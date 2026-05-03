@@ -152,13 +152,13 @@ document.getElementById('week-meta').textContent=`Uke ${weekNum} · ${fmt(monday
 
 document.getElementById('week-summary').innerHTML=`
   <strong>Uke 19 · 4–10. mai</strong><br>
-  🍝 <strong>Man 4/5:</strong> Bolognese – du er hjemme i god tid<br>
-  🥕 <strong>Tir 5/5:</strong> Gulrot/linse/appelsin-suppe – etter løpetur og møte<br>
-  🐔 <strong>Ons 6/5:</strong> Kremet kyllingpanne – siste møte 16:30<br>
+  🍝 <strong>Man 4/5:</strong> Bolognese – hjemme i god tid<br>
+  🥕 <strong>Tir 5/5:</strong> Gulrot/linse/appelsin-suppe – etter løpetur og møte til 17<br>
+  🐟 <strong>Ons 6/5:</strong> Laksepudding – møter slutter 16:30<br>
   🧀 <strong>Tor 7/5:</strong> Baked feta pasta – fri fra 14:15, god tid!<br>
-  🏃 <strong>Fre 8/5:</strong> Holmenkollstafetten hele dagen + afterparty – ingen matlaging!<br>
-  🌮 <strong>Lør 9/5:</strong> Tacokveld flyttes hit<br>
-  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi`;
+  🌮 <strong>Fre 8/5:</strong> Fredagstaco som normalt<br>
+  🏃 <strong>Lør 9/5:</strong> Holmenkollstafetten hele dagen + afterparty – ingen matlaging!<br>
+  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi – hviledag`;
 
 // cardCls: '', 'late', 'precook', 'holiday', 'ooo'
 const menu=[
@@ -166,64 +166,43 @@ const menu=[
    calNote:'Siste møte 16:00 → hjemme i god tid',calCls:'ok',
    name:'Spaghetti bolognese',time:'30 min · Familiekjær klassiker',
    link:'https://www.matprat.no/oppskrifter/familien/enkel-bolognese/',
-   ing:'Kjøttdeig 400g, hermetiske tomater, løk, hvitløk, gulrot, selleri, tomatpuré, oregano, pasta, parmesan',
+   ing:'Kjøttdeig 400g, hermetiske tomater, løk, hvitløk, gulrot, tomatpuré, oregano, pasta, parmesan',
    prepNote:null},
-  {abbr:'Tir',num:'5',mon:'mai',tag:'tag-soup',label:'Suppe',cardCls:'',
-   calNote:'Løping 14:30–16:00, møte 16:30–17:00 → lag suppen etter du er hjemme, rask!',calCls:'ok',
+  {abbr:'Tir',num:'5',mon:'mai',tag:'tag-soup',label:'Suppe',cardCls:'late',
+   calNote:'Løping 14:30–16:00 + møte 16:30–17:00 → rask suppe etterpå',calCls:'warn',
    name:'Gulrot-, linse- og appelsinsuppe',time:'25 min · Enkel · Barnevennlig',
    link:'https://meny.no/oppskrifter/suppe/gulrotsuppe-med-kokosmelk-og-appelsin/',
    ing:'Gulrøtter, røde linser, appelsin, løk, hvitløk, ingefær, kokosmelk, buljong, brød',
    prepNote:null},
   {abbr:'Ons',num:'6',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
-   calNote:'Siste møte 15:00–16:30 → litt tight, forbered torsdag kvelden før om ønskelig',calCls:'ok',
-   name:'Kremet kyllingpanne med løk og paprika',time:'25 min · One pan · Barnevennlig',
-   link:'https://oda.com/no/recipes/2830-oda-kremet-kyllingpanne-med-lok-og-paprika/',
-   ing:'Kyllingfilet, løk, rød paprika, fløte, hvitløk, kyllingbuljong, olivenolje, ris',
+   calNote:'Siste møte 15:00–16:30 → litt tight men greit',calCls:'ok',
+   name:'Laksepudding med poteter og gulrøtter',time:'30 min · Klassisk norsk',
+   link:'https://www.tine.no/oppskrifter/middag-og-hovedretter/fisk-og-skalldyr/laksepudding-med-poteter',
+   ing:'Laks (fryst ok), egg, melk, mel, poteter, gulrøtter, smør, salt, pepper',
    prepNote:null},
   {abbr:'Tor',num:'7',mon:'mai',tag:'tag-veg',label:'Vegetar',cardCls:'',
    calNote:'Siste møte 14:15 → god tid til å lage noe litt ekstra',calCls:'ok',
    name:'Baked feta pasta',time:'30 min · Ovnsrett · Lav innsats',
    link:'https://meny.no/oppskrifter/pasta/baked-feta-pasta',
-   ing:'Fetaost 200g, cherrytomater 2 pk, pasta, hvitløk, olivenolje, basilikum, salt, pepper',
+   ing:'Fetaost 200g, cherrytomater 2 pk, pasta, hvitløk, olivenolje, basilikum',
    prepNote:null},
-  {abbr:'Fre',num:'8',mon:'mai',tag:'tag-ooo',label:'Holmenkollen',cardCls:'ooo',
-   calNote:'Holmenkollstafetten 10–20 + afterparty → ingen matlaging! Spis ute hele dagen',calCls:'ooo',
-   name:'Ingen matlaging – løpedag og fest!',time:'Du fortjener hvile',
-   link:null,ing:null,prepNote:null},
-  {abbr:'Lør',num:'9',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
-   calNote:'Helg · Fredagstaco flyttes hit etter Holmenkollen-helgen',calCls:'',
-   name:'Tacobowl med cottage cheese',time:'25 min · Fredagsklassiker på lørdag',
+  {abbr:'Fre',num:'8',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
+   calNote:'Vanlig fredag → fredagstaco som normalt!',calCls:'ok',
+   name:'Tacobowl med cottage cheese',time:'25 min · Fredagsklassiker',
    link:'https://meny.no/oppskrifter/taco/tacobowl-med-cottage-cheese',
    ing:'Kjøttdeig, tacokrydder, cottage cheese, rømme, mais, salsa, ost, salat, tomat, tortillachips',
    prepNote:null},
-  {abbr:'Søn',num:'10',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
-   calNote:'Avslappet søndag etter løpeuken',calCls:'',
-   name:'Grønn risotto med scampi',time:'30 min · Litt ekstra helgemat',
+  {abbr:'Lør',num:'9',mon:'mai',tag:'tag-ooo',label:'Holmenkollen',cardCls:'ooo',
+   calNote:'Holmenkollstafetten 10–20 + afterparty på Vesuvio → ingen matlaging!',calCls:'ooo',
+   name:'Ingen matlaging – løpedag og fest!',time:'Du fortjener hvile',
+   link:null,ing:null,prepNote:null},
+  {abbr:'Søn',num:'10',mon:'mai',tag:'tag-weekend',label:'Helg',cardCls:'',
+   calNote:'Hviledag etter Holmenkollen',calCls:'',
+   name:'Grønn risotto med scampi',time:'30 min · Enkel helgemat',
    link:'https://www.rema.no/oppskrifter/ris/gronn-risotto-med-scampi/',
    ing:'Scampi 270g, risottoris, erter, spinat, løk, hvitløk, buljong, parmesan, smør, sitron',
    prepNote:null},
 ]
-
-const fixedCats=[
-  {name:'Frukt',items:[
-                      ]},
-  {name:'Alltid hjemme',items:[
-    {n:'Jordbærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
-    {n:'Bringebærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
-    {n:'Brunost G35',q:'https://meny.no/varer/ost/ost/brunost',f:'biweekly'},
-        {n:'Leverpostei',q:'https://meny.no/varer/paalegg-frokost/leverpostei',f:'biweekly'},
-            {n:'Gresk yoghurt',q:'https://meny.no/varer/meieri-egg/yoghurt',f:'weekly'},
-    {n:'Havregryn',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
-    {n:'Müsli',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
-    {n:'Weetabix',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
-        {n:'Koljekaker 95g × 2',q:'https://meny.no/varer/fisk-skalldyr/fiskekaker-og-fiskeprodukter',f:'biweekly'},
-  ]},
-  {name:'Bleier & hygiene',items:[
-    {n:'Libero trusebleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'weekly'},
-    {n:'Libero open bleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'biweekly'},
-    {n:'Libero open bleier str. 8',q:'https://meny.no/varer/barneprodukter/bleier',f:'triweekly'},
-          ]},
-];
 
 const freqLabel={weekly:'Ukentlig',biweekly:'Annenhver uke',monthly:'Månedlig',triweekly:'Hver 3. uke'};
 const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly',triweekly:'freq-triweekly'};
