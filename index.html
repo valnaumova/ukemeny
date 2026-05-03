@@ -151,129 +151,58 @@ const fmt=d=>d.toLocaleDateString('no-NO',{day:'numeric',month:'short'});
 document.getElementById('week-meta').textContent=`Uke ${weekNum} · ${fmt(monday)} – ${fmt(sunday)}`;
 
 document.getElementById('week-summary').innerHTML=`
-  <strong>Uke 18 · 27. april – 3. mai</strong><br>
-  🌴 <strong>Man 27/4:</strong> Siste feriedag i Portugal – middag ute<br>
-  ✈️ <strong>Tir 28/4:</strong> Flyr hjem – tom kjøleskap, takeaway på veien<br>
-  ⚠️ <strong>Ons 29/4:</strong> Første dag hjemme · møte til 16:30 · kun hyllevarer · lag chili etterpå<br>
-  🟠 <strong>Tor 30/4:</strong> Møte til 17:30 → chili fra kjøleskap, 10 min oppvarming<br>
-  🎉 <strong>Fre 1. mai:</strong> Fridag – kyllingbowl med søtpotet<br>
-  🌮 <strong>Lør 2. mai:</strong> Tacokveld<br>
-  🐟 <strong>Søn 3. mai:</strong> Laksepudding – klassisk norsk`;
+  <strong>Uke 19 · 4–10. mai</strong><br>
+  🍝 <strong>Man 4/5:</strong> Bolognese – du er hjemme i god tid<br>
+  🥕 <strong>Tir 5/5:</strong> Gulrot/linse/appelsin-suppe – etter løpetur og møte<br>
+  🐔 <strong>Ons 6/5:</strong> Kremet kyllingpanne – siste møte 16:30<br>
+  🧀 <strong>Tor 7/5:</strong> Baked feta pasta – fri fra 14:15, god tid!<br>
+  🏃 <strong>Fre 8/5:</strong> Holmenkollstafetten hele dagen + afterparty – ingen matlaging!<br>
+  🌮 <strong>Lør 9/5:</strong> Tacokveld flyttes hit<br>
+  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi`;
 
 // cardCls: '', 'late', 'precook', 'holiday', 'ooo'
 const menu=[
-  {abbr:'Man',num:'27',mon:'apr',tag:'tag-ooo',label:'Ferie',cardCls:'ooo',
-   calNote:'Fortsatt i Portugal – middag ute. Ingen matlaging!',calCls:'ooo',
-   name:'Middag ute – ingen matlaging i dag',time:'Nyt de siste ferietimene!',
-   link:null,ing:null,prepNote:null},
-  {abbr:'Tir',num:'28',mon:'apr',tag:'tag-ooo',label:'Reiser hjem',cardCls:'ooo',
-   calNote:'Flyr hjem fra Portugal – kommer sent med tom kjøleskap. Ta takeaway på veien!',calCls:'ooo',
-   name:'Takeaway eller pizza på veien hjem',time:'0 min · Bestill på veien',
-   link:null,ing:null,prepNote:null},
-  {abbr:'Ons',num:'29',mon:'apr',tag:'tag-veg',label:'Vegetar',cardCls:'late',
-   calNote:'Tom kjøleskap fra ferie · Siste møte 16:00–16:30 → kun hyllevarer! Lag chili etterpå.',calCls:'warn',
-   name:'Pasta med hermetiske tomater og fetaost',time:'15 min · Kun hyllevarer · Tom-kjøleskap-redder',
+  {abbr:'Man',num:'4',mon:'mai',tag:'tag-poultry',label:'Kjøtt',cardCls:'',
+   calNote:'Siste møte 16:00 → hjemme i god tid',calCls:'ok',
+   name:'Spaghetti bolognese',time:'30 min · Familiekjær klassiker',
+   link:'https://www.matprat.no/oppskrifter/familien/enkel-bolognese/',
+   ing:'Kjøttdeig 400g, hermetiske tomater, løk, hvitløk, gulrot, selleri, tomatpuré, oregano, pasta, parmesan',
+   prepNote:null},
+  {abbr:'Tir',num:'5',mon:'mai',tag:'tag-soup',label:'Suppe',cardCls:'',
+   calNote:'Løping 14:30–16:00, møte 16:30–17:00 → lag suppen etter du er hjemme, rask!',calCls:'ok',
+   name:'Gulrot-, linse- og appelsinsuppe',time:'25 min · Enkel · Barnevennlig',
+   link:'https://meny.no/oppskrifter/suppe/gulrotsuppe-med-kokosmelk-og-appelsin/',
+   ing:'Gulrøtter, røde linser, appelsin, løk, hvitløk, ingefær, kokosmelk, buljong, brød',
+   prepNote:null},
+  {abbr:'Ons',num:'6',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
+   calNote:'Siste møte 15:00–16:30 → litt tight, forbered torsdag kvelden før om ønskelig',calCls:'ok',
+   name:'Kremet kyllingpanne med løk og paprika',time:'25 min · One pan · Barnevennlig',
+   link:'https://oda.com/no/recipes/2830-oda-kremet-kyllingpanne-med-lok-og-paprika/',
+   ing:'Kyllingfilet, løk, rød paprika, fløte, hvitløk, kyllingbuljong, olivenolje, ris',
+   prepNote:null},
+  {abbr:'Tor',num:'7',mon:'mai',tag:'tag-veg',label:'Vegetar',cardCls:'',
+   calNote:'Siste møte 14:15 → god tid til å lage noe litt ekstra',calCls:'ok',
+   name:'Baked feta pasta',time:'30 min · Ovnsrett · Lav innsats',
    link:'https://meny.no/oppskrifter/pasta/baked-feta-pasta',
-   ing:'Pasta (fra skap), hermetiske tomater (fra skap), fetaost, hvitløk, olivenolje, tørr basilikum',
-   prepNote:'Lag chili sin carne etter middagen i kveld – sett i kjøleskapet til torsdag.'},
-  {abbr:'Tor',num:'30',mon:'apr',tag:'tag-veg',label:'Vegetar – forebredt',cardCls:'precook',
-   calNote:'Møte 16:30–17:30 Oslo-tid → varm opp chilien fra kjøleskapet, 10 min!',calCls:'precook',
-   name:'Chili sin carne med ris og rømme',time:'10 min å varme opp · Laget dagen før',
-   link:'https://meny.no/oppskrifter/vegetar/Chili-sin-carne/',
-   ing:'Kidneybønner, hermetiske tomater, mais, løk, paprika, hvitløk, tacokrydder, ris, rømme',
+   ing:'Fetaost 200g, cherrytomater 2 pk, pasta, hvitløk, olivenolje, basilikum, salt, pepper',
    prepNote:null},
-  {abbr:'Fre',num:'1',mon:'mai',tag:'tag-holiday',label:'Fridag',cardCls:'holiday',
-   calNote:'1. mai – nasjonal fridag! God tid til noe festlig',calCls:'ok',
-   name:'Kyllingbowl med søtpotet og quinoa',time:'30 min · Fargerikt og festlig',
-   link:'https://meny.no/oppskrifter/kylling/kyllingbowl-med-sotpotet',
-   ing:'Kyllingfilet, søtpotet, quinoa, avokado, rødkål, limejuice, koriander, tacokrydder, rømme',
-   prepNote:null},
-  {abbr:'Lør',num:'2',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
-   calNote:'Helg · Fredagstaco flyttes hit',calCls:'',
+  {abbr:'Fre',num:'8',mon:'mai',tag:'tag-ooo',label:'Holmenkollen',cardCls:'ooo',
+   calNote:'Holmenkollstafetten 10–20 + afterparty → ingen matlaging! Spis ute hele dagen',calCls:'ooo',
+   name:'Ingen matlaging – løpedag og fest!',time:'Du fortjener hvile',
+   link:null,ing:null,prepNote:null},
+  {abbr:'Lør',num:'9',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
+   calNote:'Helg · Fredagstaco flyttes hit etter Holmenkollen-helgen',calCls:'',
    name:'Tacobowl med cottage cheese',time:'25 min · Fredagsklassiker på lørdag',
    link:'https://meny.no/oppskrifter/taco/tacobowl-med-cottage-cheese',
    ing:'Kjøttdeig, tacokrydder, cottage cheese, rømme, mais, salsa, ost, salat, tomat, tortillachips',
    prepNote:null},
-  {abbr:'Søn',num:'3',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
-   calNote:'Avslappet søndag',calCls:'',
-   name:'Laksepudding med poteter og gulrøtter',time:'30 min · Klassisk norsk',
-   link:'https://www.tine.no/oppskrifter/middag-og-hovedretter/fisk-og-skalldyr/laksepudding-med-poteter',
-   ing:'Laks (fryst ok), egg, melk, mel, poteter, gulrøtter, smør, salt, pepper',
+  {abbr:'Søn',num:'10',mon:'mai',tag:'tag-fish',label:'Fisk',cardCls:'',
+   calNote:'Avslappet søndag etter løpeuken',calCls:'',
+   name:'Grønn risotto med scampi',time:'30 min · Litt ekstra helgemat',
+   link:'https://www.rema.no/oppskrifter/ris/gronn-risotto-med-scampi/',
+   ing:'Scampi 270g, risottoris, erter, spinat, løk, hvitløk, buljong, parmesan, smør, sitron',
    prepNote:null},
 ]
-
-const dc=document.getElementById('days-container');
-const chk=`<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-menu.forEach((d,i)=>{
-  const cc=['day-card',d.cardCls].filter(Boolean).join(' ');
-  const bodyContent = d.ing ? `
-    ${d.prepNote ? `<div class="cal-note precook">${d.prepNote}</div>` : ''}
-    <div class="ing-label">Ingredienser</div>
-    <div class="ing-list">${d.ing}</div>
-    ${d.link ? `<a class="recipe-link" href="${d.link}" target="_blank">Åpne oppskrift →</a>` : ''}
-  ` : `<div style="font-size:13px;color:var(--ink-muted)">Ingen oppskrift denne dagen – nyt!</div>`;
-
-  dc.innerHTML+=`<div class="${cc}" id="card-${i}">
-    <div class="card-top" onclick="toggleCard(${i})">
-      <div class="day-col"><div class="day-abbr">${d.abbr}</div><div class="day-num">${d.num}</div><div class="day-mon">${d.mon}</div></div>
-      <div><span class="dish-tag ${d.tag}">${d.label}</span><div class="dish-name">${d.name}</div><div class="dish-time">${d.time}</div></div>
-      <div class="expand-icon">▾</div>
-    </div>
-    <div class="card-body">
-      <div class="cal-note ${d.calCls}">${d.calNote}</div>
-      ${bodyContent}
-    </div>
-  </div>`;
-});
-
-function toggleCard(i){document.getElementById('card-'+i).classList.toggle('open');}
-
-const shopCats=[
-  {name:'Kjøtt & fisk',items:[
-    {n:'Kyllingfilet 700g',q:'https://meny.no/varer/kylling-og-fjaerkre/kylling/kyllingfilet',f:'weekly'},
-    {n:'Laks fryst 500g',q:'https://meny.no/varer/fisk-skalldyr/fisk/laks',f:'weekly'},
-    {n:'Kjøttdeig 400g',q:'https://meny.no/varer/kjott/kjoettdeig',f:'weekly'},
-  ]},
-  {name:'Meieri & egg',items:[
-    {n:'Lettmelk 0,5% Tine 1l × 3',q:'https://meny.no/varer/meieri-egg/melk/lettmelk',f:'weekly'},
-    {n:'Fløte 38%',q:'https://meny.no/varer/meieri-egg/flote/matflote',f:'weekly'},
-    {n:'Smør Tine 500g',q:'https://meny.no/varer/meieri-egg/smor-margarin/smor',f:'monthly'},
-    {n:'Egg 10-pk',q:'https://meny.no/varer/meieri-egg/egg',f:'biweekly'},
-    {n:'Fetaost 200g',q:'https://meny.no/varer/ost/ost/hvitost',f:'weekly'},
-    {n:'Cottage cheese 2% 400g',q:'https://meny.no/varer/meieri-egg/cottage-cheese',f:'weekly'},
-    {n:'Rømme',q:'https://meny.no/varer/meieri-egg/romme',f:'weekly'},
-  ]},
-  {name:'Grønnsaker & frukt',items:[
-    {n:'Sjampinjong 400g',q:'https://meny.no/varer/frukt-gront/gronnsaker/sopp',f:'weekly'},
-    {n:'Søtpotet',q:'https://meny.no/varer/frukt-gront/gronnsaker/rotgronnsaker/sotpotet',f:'weekly'},
-    {n:'Paprika rød 3 stk',q:'https://meny.no/varer/frukt-gront/gronnsaker/paprika',f:'weekly'},
-    {n:'Løk 4 stk',q:'https://meny.no/varer/frukt-gront/gronnsaker/lok',f:'weekly'},
-    {n:'Hvitløk',q:'https://meny.no/varer/frukt-gront/gronnsaker/lok/hvitlok',f:'weekly'},
-    {n:'Gulrøtter 1 kg',q:'https://meny.no/varer/frukt-gront/gronnsaker/rotgronnsaker/gulrotter',f:'weekly'},
-    {n:'Poteter 1 kg',q:'https://meny.no/varer/frukt-gront/poteter',f:'weekly'},
-    {n:'Avokado 2 stk',q:'https://meny.no/varer/frukt-gront/frukt/eksotisk-frukt/avokado',f:'weekly'},
-    {n:'Cherrytomater 2 pk',q:'https://meny.no/varer/frukt-gront/gronnsaker/tomater',f:'weekly'},
-    {n:'Sitron 2 stk',q:'https://meny.no/varer/frukt-gront/frukt/sitrusfrukt/sitron',f:'weekly'},
-                          ]},
-  {name:'Tørrvarer & hermetikk',items:[
-    {n:'Pasta penne 500g',q:'https://meny.no/varer/middag/pasta-og-ris/pasta',f:'weekly'},
-    {n:'Quinoa 400g',q:'https://meny.no/varer/middag/pasta-og-ris/ris',f:'weekly'},
-    {n:'Ris 500g',q:'https://meny.no/varer/middag/pasta-og-ris/ris',f:'weekly'},
-    {n:'Hermetiske tomater 2 boks',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
-    {n:'Kidneybønner 1 boks',q:'https://meny.no/varer/middag/hermetikk/bønner',f:'weekly'},
-    {n:'Mais hermetikk',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
-    {n:'Tacokrydder',q:'https://meny.no/varer/middag/krydder-og-smaker',f:'weekly'},
-    {n:'Salsa',q:'https://meny.no/varer/middag/sauser-og-dressinger',f:'weekly'},
-    {n:'Tortillachips',q:'https://meny.no/varer/snacks/chips-og-potetgull',f:'weekly'},
-    {n:'Kyllingbuljong',q:'https://meny.no/varer/middag/suppe/buljong',f:'monthly'},
-    {n:'Olivenolje',q:'https://meny.no/varer/middag/oljer-og-eddik',f:'monthly'},
-  ]},
-  {name:'Brød',items:[
-    {n:'Grovt brød',q:'https://meny.no/varer/bakeri/brod-og-rundstykker',f:'weekly'},
-    {n:'Knekkebrød',q:'https://meny.no/varer/bakeri/knekkebroed-og-kjeks',f:'weekly'},
-  ]},
-];
 
 const fixedCats=[
   {name:'Frukt',items:[
