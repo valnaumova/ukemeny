@@ -156,9 +156,9 @@ document.getElementById('week-summary').innerHTML=`
   🥕 <strong>Tir 5/5:</strong> Gulrot/linse/appelsin-suppe – etter løpetur og møte til 17<br>
   🐟 <strong>Ons 6/5:</strong> Laksepudding – møter slutter 16:30<br>
   🧀 <strong>Tor 7/5:</strong> Baked feta pasta – fri fra 14:15, god tid!<br>
-  🌮 <strong>Fre 8/5:</strong> Fredagstaco som normalt<br>
-  🏃 <strong>Lør 9/5:</strong> Holmenkollstafetten hele dagen + afterparty – ingen matlaging!<br>
-  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi – hviledag`;
+  🌮 <strong>Fre 8/5:</strong> Taco med søtpotet, scampi og cottage cheese<br>
+  🏃 <strong>Lør 9/5:</strong> Holmenkollstafetten – partner lager tomatsuppe til familien<br>
+  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi`;
 
 // cardCls: '', 'late', 'precook', 'holiday', 'ooo'
 const menu=[
@@ -187,14 +187,14 @@ const menu=[
    ing:'Fetaost 200g, cherrytomater 2 pk, pasta, hvitløk, olivenolje, basilikum',
    prepNote:null},
   {abbr:'Fre',num:'8',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
-   calNote:'Vanlig fredag → fredagstaco som normalt!',calCls:'ok',
+   calNote:'Vanlig fredag → fredagstaco!',calCls:'ok',
    name:'Tacobowl med søtpotet, scampi og cottage cheese',time:'25 min · Fredagsfavoritt',
    link:'https://meny.no/oppskrifter/taco/tacobowl-med-cottage-cheese',
    ing:'Scampi, søtpotet, cottage cheese, rømme, tacokrydder, rødkål, koriander, limejuice, avokado',
    prepNote:null},
   {abbr:'Lør',num:'9',mon:'mai',tag:'tag-soup',label:'Holmenkollen',cardCls:'ooo',
    calNote:'Du er på Holmenkollen → partner lager enkel suppe til familien hjemme',calCls:'ooo',
-   name:'Kremet tomatsuppe med brød og ost',time:'10 min · Ferdig suppe · Barna og den hjemme klarer dette!',
+   name:'Kremet tomatsuppe med brød og ost',time:'10 min · Ferdig suppe · Partner lager!',
    link:'https://meny.no/oppskrifter/suppe/ovnsbakt-tiktok-tomatsuppe/',
    ing:'Ferdig tomatsuppe (kartong), godt brød, smør, revet ost',
    prepNote:'Partner lager dette mens du er på Holmenkollen!'},
@@ -205,6 +205,32 @@ const menu=[
    ing:'Scampi 270g, risottoris, erter, spinat, løk, hvitløk, buljong, parmesan, smør, sitron',
    prepNote:null},
 ]
+
+const fixedCats=[
+  {name:'Frukt',items:[
+    {n:'Epler røde × 5',q:'https://meny.no/varer/frukt-gront/frukt/epler-og-paerer',f:'weekly'},
+    {n:'Appelsin 3–4 stk',q:'https://meny.no/varer/frukt-gront/frukt/sitrusfrukt/appelsin',f:'weekly'},
+    {n:'Bananer',q:'https://meny.no/varer/frukt-gront/frukt/banan',f:'weekly'},
+    {n:'Kiwi × 2',q:'https://meny.no/varer/frukt-gront/frukt/eksotisk-frukt',f:'weekly'},
+    {n:'Blåbær',q:'https://meny.no/varer/frukt-gront/baer',f:'weekly'},
+  ]},
+  {name:'Alltid hjemme',items:[
+    {n:'Jordbærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
+    {n:'Bringebærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
+    {n:'Brunost G35',q:'https://meny.no/varer/ost/ost/brunost',f:'biweekly'},
+        {n:'Leverpostei',q:'https://meny.no/varer/paalegg-frokost/leverpostei',f:'biweekly'},
+            {n:'Gresk yoghurt',q:'https://meny.no/varer/meieri-egg/yoghurt',f:'weekly'},
+    {n:'Havregryn',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+    {n:'Müsli',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+    {n:'Weetabix',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+        {n:'Koljekaker 95g × 2',q:'https://meny.no/varer/fisk-skalldyr/fiskekaker-og-fiskeprodukter',f:'biweekly'},
+  ]},
+  {name:'Bleier & hygiene',items:[
+    {n:'Libero trusebleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'weekly'},
+    {n:'Libero open bleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'biweekly'},
+    {n:'Libero open bleier str. 8',q:'https://meny.no/varer/barneprodukter/bleier',f:'triweekly'},
+          ]},
+];
 
 const freqLabel={weekly:'Ukentlig',biweekly:'Annenhver uke',monthly:'Månedlig',triweekly:'Hver 3. uke'};
 const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly',triweekly:'freq-triweekly'};
@@ -239,8 +265,8 @@ function switchTab(name,btn){
 </html>const shopCats=[
   {name:'Kjøtt & fisk',items:[
     {n:'Kjøttdeig 400g',q:'https://meny.no/varer/kjott/kjoettdeig',f:'weekly'},
-    {n:'Scampi 270g fiskemannen',q:'https://meny.no/varer/fisk-skalldyr/skalldyr/reker',f:'weekly'},
     {n:'Laks fryst 500g',q:'https://meny.no/varer/fisk-skalldyr/fisk/laks',f:'weekly'},
+    {n:'Scampi 270g × 2',q:'https://meny.no/varer/fisk-skalldyr/skalldyr/reker',f:'weekly'},
   ]},
   {name:'Meieri & egg',items:[
     {n:'Lettmelk 0,5% Tine 1l × 3',q:'https://meny.no/varer/meieri-egg/melk/lettmelk',f:'weekly'},
@@ -252,20 +278,21 @@ function switchTab(name,btn){
     {n:'Cottage cheese 2% 400g',q:'https://meny.no/varer/meieri-egg/cottage-cheese',f:'weekly'},
     {n:'Rømme',q:'https://meny.no/varer/meieri-egg/romme',f:'weekly'},
     {n:'Gresk yoghurt',q:'https://meny.no/varer/meieri-egg/yoghurt',f:'weekly'},
+    {n:'Revet ost (til suppe)',q:'https://meny.no/varer/meieri-egg/ost/parmesan',f:'weekly'},
   ]},
   {name:'Grønnsaker',items:[
     {n:'Gulrøtter 1 kg',q:'https://meny.no/varer/frukt-gront/gronnsaker/rotgronnsaker/gulrotter',f:'weekly'},
     {n:'Søtpotet 400g',q:'https://meny.no/varer/frukt-gront/gronnsaker/rotgronnsaker/sotpotet',f:'weekly'},
+    {n:'Poteter 1 kg',q:'https://meny.no/varer/frukt-gront/poteter',f:'weekly'},
     {n:'Cherrytomater 2 pk',q:'https://meny.no/varer/frukt-gront/gronnsaker/tomater',f:'weekly'},
     {n:'Løk 3 stk',q:'https://meny.no/varer/frukt-gront/gronnsaker/lok',f:'weekly'},
     {n:'Hvitløk',q:'https://meny.no/varer/frukt-gront/gronnsaker/lok',f:'weekly'},
-    {n:'Paprika rød 2 stk',q:'https://meny.no/varer/frukt-gront/gronnsaker/paprika',f:'weekly'},
     {n:'Spinat fersk 150g',q:'https://meny.no/varer/frukt-gront/gronnsaker/salater',f:'weekly'},
     {n:'Avokado 2 stk',q:'https://meny.no/varer/frukt-gront/frukt/eksotisk-frukt/avokado',f:'weekly'},
     {n:'Rødkål (liten)',q:'https://meny.no/varer/frukt-gront/gronnsaker',f:'weekly'},
     {n:'Sitron 2 stk',q:'https://meny.no/varer/frukt-gront/frukt/sitrusfrukt/sitron',f:'weekly'},
-    {n:'Ingefær (tube eller fersk)',q:'https://meny.no/varer/frukt-gront/gronnsaker',f:'weekly'},
-    {n:'Poteter 1 kg',q:'https://meny.no/varer/frukt-gront/poteter',f:'weekly'},
+    {n:'Ingefær (tube)',q:'https://meny.no/varer/frukt-gront/gronnsaker',f:'weekly'},
+    {n:'Appelsin 1 stk',q:'https://meny.no/varer/frukt-gront/frukt/sitrusfrukt/appelsin',f:'weekly'},
   ]},
   {name:'Tørrvarer & hermetikk',items:[
     {n:'Pasta penne 500g',q:'https://meny.no/varer/middag/pasta-og-ris/pasta',f:'weekly'},
@@ -273,14 +300,14 @@ function switchTab(name,btn){
     {n:'Røde linser 400g',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
     {n:'Hermetiske tomater 2 boks',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
     {n:'Kokosmelk 1 boks',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
-    {n:'Tomatsuppe kartong (ferdig)',q:'https://meny.no/varer/middag/suppe/buljong',f:'weekly'},
-    {n:'Tacokrydder',q:'https://meny.no/varer/middag/krydder-og-smaker',f:'weekly'},
+    {n:'Tomatsuppe kartong',q:'https://meny.no/varer/middag/suppe/buljong',f:'weekly'},
     {n:'Tomatpuré',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
+    {n:'Frosne erter 400g',q:'https://meny.no/varer/middag/hermetikk',f:'weekly'},
+    {n:'Tacokrydder',q:'https://meny.no/varer/middag/krydder-og-smaker',f:'weekly'},
     {n:'Kyllingbuljong',q:'https://meny.no/varer/middag/suppe/buljong',f:'monthly'},
     {n:'Olivenolje',q:'https://meny.no/varer/middag/oljer-og-eddik',f:'monthly'},
-    {n:'Oregano (tørr)',q:'https://meny.no/varer/middag/krydder-og-smaker',f:'monthly'},
   ]},
-  {name:'Brød & annet',items:[
+  {name:'Brød',items:[
     {n:'Grovt brød',q:'https://meny.no/varer/bakeri/brod-og-rundstykker',f:'weekly'},
     {n:'Knekkebrød',q:'https://meny.no/varer/bakeri/knekkebroed-og-kjeks',f:'weekly'},
   ]},
@@ -442,9 +469,9 @@ document.getElementById('week-summary').innerHTML=`
   🥕 <strong>Tir 5/5:</strong> Gulrot/linse/appelsin-suppe – etter løpetur og møte til 17<br>
   🐟 <strong>Ons 6/5:</strong> Laksepudding – møter slutter 16:30<br>
   🧀 <strong>Tor 7/5:</strong> Baked feta pasta – fri fra 14:15, god tid!<br>
-  🌮 <strong>Fre 8/5:</strong> Fredagstaco som normalt<br>
-  🏃 <strong>Lør 9/5:</strong> Holmenkollstafetten hele dagen + afterparty – ingen matlaging!<br>
-  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi – hviledag`;
+  🌮 <strong>Fre 8/5:</strong> Taco med søtpotet, scampi og cottage cheese<br>
+  🏃 <strong>Lør 9/5:</strong> Holmenkollstafetten – partner lager tomatsuppe til familien<br>
+  🦐 <strong>Søn 10/5:</strong> Grønn risotto med scampi`;
 
 // cardCls: '', 'late', 'precook', 'holiday', 'ooo'
 const menu=[
@@ -473,14 +500,14 @@ const menu=[
    ing:'Fetaost 200g, cherrytomater 2 pk, pasta, hvitløk, olivenolje, basilikum',
    prepNote:null},
   {abbr:'Fre',num:'8',mon:'mai',tag:'tag-taco',label:'Taco',cardCls:'',
-   calNote:'Vanlig fredag → fredagstaco som normalt!',calCls:'ok',
+   calNote:'Vanlig fredag → fredagstaco!',calCls:'ok',
    name:'Tacobowl med søtpotet, scampi og cottage cheese',time:'25 min · Fredagsfavoritt',
    link:'https://meny.no/oppskrifter/taco/tacobowl-med-cottage-cheese',
    ing:'Scampi, søtpotet, cottage cheese, rømme, tacokrydder, rødkål, koriander, limejuice, avokado',
    prepNote:null},
   {abbr:'Lør',num:'9',mon:'mai',tag:'tag-soup',label:'Holmenkollen',cardCls:'ooo',
    calNote:'Du er på Holmenkollen → partner lager enkel suppe til familien hjemme',calCls:'ooo',
-   name:'Kremet tomatsuppe med brød og ost',time:'10 min · Ferdig suppe · Barna og den hjemme klarer dette!',
+   name:'Kremet tomatsuppe med brød og ost',time:'10 min · Ferdig suppe · Partner lager!',
    link:'https://meny.no/oppskrifter/suppe/ovnsbakt-tiktok-tomatsuppe/',
    ing:'Ferdig tomatsuppe (kartong), godt brød, smør, revet ost',
    prepNote:'Partner lager dette mens du er på Holmenkollen!'},
@@ -491,6 +518,32 @@ const menu=[
    ing:'Scampi 270g, risottoris, erter, spinat, løk, hvitløk, buljong, parmesan, smør, sitron',
    prepNote:null},
 ]
+
+const fixedCats=[
+  {name:'Frukt',items:[
+    {n:'Epler røde × 5',q:'https://meny.no/varer/frukt-gront/frukt/epler-og-paerer',f:'weekly'},
+    {n:'Appelsin 3–4 stk',q:'https://meny.no/varer/frukt-gront/frukt/sitrusfrukt/appelsin',f:'weekly'},
+    {n:'Bananer',q:'https://meny.no/varer/frukt-gront/frukt/banan',f:'weekly'},
+    {n:'Kiwi × 2',q:'https://meny.no/varer/frukt-gront/frukt/eksotisk-frukt',f:'weekly'},
+    {n:'Blåbær',q:'https://meny.no/varer/frukt-gront/baer',f:'weekly'},
+  ]},
+  {name:'Alltid hjemme',items:[
+    {n:'Jordbærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
+    {n:'Bringebærsyltetøy',q:'https://meny.no/varer/paalegg-frokost/syltetoy-og-honning',f:'monthly'},
+    {n:'Brunost G35',q:'https://meny.no/varer/ost/ost/brunost',f:'biweekly'},
+        {n:'Leverpostei',q:'https://meny.no/varer/paalegg-frokost/leverpostei',f:'biweekly'},
+            {n:'Gresk yoghurt',q:'https://meny.no/varer/meieri-egg/yoghurt',f:'weekly'},
+    {n:'Havregryn',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+    {n:'Müsli',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+    {n:'Weetabix',q:'https://meny.no/varer/paalegg-frokost/frokostblandinger',f:'weekly'},
+        {n:'Koljekaker 95g × 2',q:'https://meny.no/varer/fisk-skalldyr/fiskekaker-og-fiskeprodukter',f:'biweekly'},
+  ]},
+  {name:'Bleier & hygiene',items:[
+    {n:'Libero trusebleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'weekly'},
+    {n:'Libero open bleier str. 6',q:'https://meny.no/varer/barneprodukter/bleier',f:'biweekly'},
+    {n:'Libero open bleier str. 8',q:'https://meny.no/varer/barneprodukter/bleier',f:'triweekly'},
+          ]},
+];
 
 const freqLabel={weekly:'Ukentlig',biweekly:'Annenhver uke',monthly:'Månedlig',triweekly:'Hver 3. uke'};
 const freqCls={weekly:'freq-weekly',biweekly:'freq-biweekly',monthly:'freq-monthly',triweekly:'freq-triweekly'};
