@@ -132,14 +132,7 @@ footer a{color:var(--orange);text-decoration:none;}
 </main>
 <footer>Sist oppdatert: 15. mai 2026 · <a href="https://meny.no/nettbutikk" target="_blank">Bestill på meny.no</a></footer>
 <script>
-const now = new Date();
-const dow = now.getDay();
-const mon = new Date(now); mon.setDate(now.getDate() - (dow===0?6:dow-1));
-const sun = new Date(mon); sun.setDate(mon.getDate()+6);
-const soy = new Date(now.getFullYear(),0,1);
-const wn  = Math.ceil((((now-soy)/86400000)+soy.getDay()+1)/7);
-const fmt = d => d.toLocaleDateString('no-NO',{day:'numeric',month:'short'});
-document.getElementById('wm').textContent = 'Uke '+wn+' · '+fmt(mon)+' – '+fmt(sun);
+document.getElementById('wm').textContent = 'Uke 20 · 16. mai – 24. mai';
 
 const MENU = [
   {abbr:'Lor',num:'16',mon:'mai',tag:'tag-weekend',label:'Helg',cls:'',
