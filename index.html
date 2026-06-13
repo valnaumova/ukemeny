@@ -91,7 +91,7 @@ footer a{color:var(--orange);text-decoration:none;}
 <header>
   <div class="hi">
     <div class="ht">Ukemeny<br><em>for familien</em></div>
-    <div class="hm">Uke 24 &middot; 6&ndash;12. juni</div>
+    <div class="hm">Uke 25 &middot; 14&ndash;20. juni</div>
     <div class="tb">
       <button class="tbtn active" onclick="switchTab('menu',this)">Middager</button>
       <button class="tbtn" onclick="switchTab('shop',this)">Handlekurv</button>
@@ -129,102 +129,99 @@ footer a{color:var(--orange);text-decoration:none;}
     <div id="fc"></div>
   </div>
 </main>
-<footer>Sist oppdatert: 6. juni 2026 &middot; <a href="https://meny.no/nettbutikk" target="_blank">Bestill pa meny.no</a></footer>
+<footer>Sist oppdatert: 13. juni 2026 &middot; <a href="https://meny.no/nettbutikk" target="_blank">Bestill pa meny.no</a></footer>
 <script>
 var MENU = [
-  {abbr:'Lor',num:'6',mon:'juni',tag:'tag-taco',label:'Taco',cls:'ooo',
-   note:'Sykemelding - god tid! Lekker scampi-taco',ncls:'ooo',
-   name:'Taco med scampi, mango, sotpotet og cottage cheese',time:'30 min - Fargerik og frisk',
-   link:'https://www.matprat.no/oppskrifter/kylling/tacosalat/',
-   ing:'Scampi 400g, mango 1 stk, sotpotet 2 stk, cottage cheese, tacokrydder, hvitlok, limejuice, tacoskjell eller lomper, salat, tomat',
+  {abbr:'Lor',num:'14',mon:'juni',tag:'tag-taco',label:'Pizza',cls:'',
+   note:'Helgemat med barna - lag deigen sammen!',ncls:'ok',
+   name:'Hjemmelaget pizza med mozzarella, paprika og mais',time:'35 min - Helgefavoritt',
+   link:'https://www.matprat.no/oppskrifter/familiemat/pizzadeig/',
+   ing:'Pizzadeig (gjerkjekspakke, hvetemel, olje, salt), mozzarella 125g, hermetiske tomater 1 boks, paprika 2 stk, mais 1 boks, hvitlok, oregano, olivenolje',
    prep:null},
-  {abbr:'Son',num:'7',mon:'juni',tag:'tag-fish',label:'Fisk',cls:'ooo',
-   note:'Gjester: svigers til middag - elegant og skalerbart for 6 personer',ncls:'ooo',
-   name:'Ovnsbakt torsk med poteter og sitronsmor',time:'40 min - Festmiddag - Barnevennlig',
-   link:'https://www.matprat.no/oppskrifter/fisk/ovnsbakt-torsk/',
-   ing:'Torskefilet 800g, poteter 1kg, smor 75g, sitron 2 stk, hvitlok, kapers, persille, olivenolje, salt, pepper',
+  {abbr:'Son',num:'15',mon:'juni',tag:'tag-veg',label:'Vegetar',cls:'',
+   note:'Lett og sommerlig sondagsmiddag',ncls:'ok',
+   name:'Gronnsaksfrittata med squash, paprika og fetaost',time:'30 min - Enkel og god',
+   link:'https://www.matprat.no/oppskrifter/sunn/frittata/',
+   ing:'Egg 6 stk, squash 1 stk, paprika 1 stk, lok 1 stk, fetaost 100g, olivenolje, salt, pepper, friske urter (basilikum eller persille)',
    prep:null},
-  {abbr:'Man',num:'8',mon:'juni',tag:'tag-soup',label:'Suppe',cls:'ooo',
-   note:'Sykemelding - god tid',ncls:'ooo',
-   name:'Minestrone med grovt brod',time:'30 min - Lett og naring - Ingen flote',
-   link:'https://www.matprat.no/oppskrifter/sunn/minestrone/',
-   ing:'Hermetiske tomater 2 boks, gulrot 2 stk, lok 1 stk, hvitlok, selleri, hermetiske kikerter, pasta (liten), grovt brod, parmesan, buljong, olivenolje',
+  {abbr:'Man',num:'16',mon:'juni',tag:'tag-soup',label:'Suppe',cls:'',
+   note:'Frisk sommersupe - ingen flote',ncls:'ok',
+   name:'Tomatsuppe med basilikum og grovt brod',time:'25 min - Lett og aromatisk',
+   link:'https://www.matprat.no/oppskrifter/sunn/tomatsuppe/',
+   ing:'Hermetiske tomater 2 boks, lok 1 stk, hvitlok 2 fedd, buljong 5dl, fersk basilikum, olivenolje, salt, pepper, grovt brod',
    prep:null},
-  {abbr:'Tir',num:'9',mon:'juni',tag:'tag-poultry',label:'Kylling',cls:'ooo',
-   note:'Sykemelding - god tid',ncls:'ooo',
-   name:'Kyllingwok med nudler og gronnsaker',time:'25 min - Rask og frisk',
-   link:'https://www.matprat.no/oppskrifter/kylling/kyllingwok/',
-   ing:'Kyllingfilet 500g, eggnudler 300g, paprika 2 stk, gulrot 1 stk, lok 1 stk, hvitlok, soyasaus, ingefar, sesamolje, varlok',
+  {abbr:'Tir',num:'17',mon:'juni',tag:'tag-veg',label:'Egg',cls:'late',
+   note:'Sent mote til 16:30 - kjapp rett pa 15 min',ncls:'warn',
+   name:'Omelett med asparges, erter og salat',time:'15 min - Superrask',
+   link:'https://www.matprat.no/oppskrifter/sunn/omelett/',
+   ing:'Egg 6 stk, asparges 1 bunt, erter (frossen) 100g, lok 1 stk, olivenolje, salt, pepper, salat til siden',
    prep:null},
-  {abbr:'Ons',num:'10',mon:'juni',tag:'tag-veg',label:'Vegetar',cls:'ooo',
-   note:'Sykemelding - god tid',ncls:'ooo',
-   name:'Linsegryte med hermetiske tomater',time:'25 min - Enkel og mettende - Ingen flote',
-   link:'https://www.matprat.no/oppskrifter/sunn/linsesuppe/',
-   ing:'Rode linser 300g, hermetiske tomater 2 boks, lok 1 stk, hvitlok, gulrot 1 stk, buljong, spisskummen, paprikapulver, olivenolje, grovt brod',
+  {abbr:'Ons',num:'18',mon:'juni',tag:'tag-poultry',label:'Kylling',cls:'',
+   note:'God tid - sommermiddag pa grillen eller i panna',ncls:'ok',
+   name:'Kyllinglår med grillede gronnsaker og couscous',time:'30 min - Sommerfrisk',
+   link:'https://www.matprat.no/oppskrifter/kylling/grillede-kyllinglaar/',
+   ing:'Kyllinglår 4 stk, couscous 300g, paprika 2 stk, squash 1 stk, lok 1 stk, sitron 1 stk, hvitlok, olivenolje, timian, salt, pepper',
    prep:null},
-  {abbr:'Tor',num:'11',mon:'juni',tag:'tag-pasta',label:'Pasta',cls:'ooo',
-   note:'Sykemelding - god tid',ncls:'ooo',
-   name:'Pasta med kylling, parmesan og sitron',time:'25 min - Frisk og barnevennlig',
-   link:'https://www.matprat.no/oppskrifter/kylling/pasta-med-kylling/',
-   ing:'Pasta 400g, kyllingfilet 400g, parmesan revet, sitron 1 stk, hvitlok, olivenolje, salt, pepper, persille',
+  {abbr:'Tor',num:'19',mon:'juni',tag:'tag-pasta',label:'Pasta',cls:'',
+   note:'Ingen flote - olivenolje og pastavann gir kremet saus',ncls:'ok',
+   name:'Pasta med laks, sitron og spinat',time:'25 min - Frisk og lett',
+   link:'https://www.matprat.no/oppskrifter/fisk/pasta-med-laks/',
+   ing:'Pasta 400g, laks 400g, fersk spinat 100g, sitron 1 stk, hvitlok 2 fedd, olivenolje, salt, pepper, dill fersk',
    prep:null},
-  {abbr:'Fre',num:'12',mon:'juni',tag:'tag-fish',label:'Fisk',cls:'ooo',
-   note:'Sykemelding - god tid',ncls:'ooo',
-   name:'Laks med ovnsbakte gronnsaker og poteter',time:'30 min - Enkel hverdagsmiddag',
-   link:'https://meny.no/varer/fisk-skalldyr/fisk/laks',
-   ing:'Laks 500g, poteter 600g, gulrot 2 stk, lok 1 stk, paprika 1 stk, olivenolje, sitron, timian, salt, pepper',
+  {abbr:'Fre',num:'20',mon:'juni',tag:'tag-fish',label:'Fisk',cls:'',
+   note:'Fredagsfeeling for hele familien',ncls:'ok',
+   name:'Fiskeburger med coleslaw og ovnsfrites',time:'30 min - Fredagsfavoritt',
+   link:'https://www.matprat.no/oppskrifter/fisk/fiskeburger/',
+   ing:'Fiskekaker eller torsk 500g, burgerbrød 4 stk, poteter 800g (frites), hodekål 1/4, gulrot 1 stk, majones, sitronsaft, dill, olivenolje, salt',
    prep:null},
 ];
 
 var SHOP = [
   {cat:'Fisk og skalldyr',items:[
-    {n:'Scampi 400g',q:'https://meny.no/varer/fisk-skalldyr/skalldyr',f:'fw'},
-    {n:'Torskefilet 800g',q:'https://meny.no/varer/fisk-skalldyr/fisk/torsk',f:'fw'},
-    {n:'Laks fersk 500g',q:'https://meny.no/varer/fisk-skalldyr/fisk/laks',f:'fw'},
+    {n:'Laks fersk 400g',q:'https://meny.no/varer/fisk-skalldyr/fisk/laks',f:'fw'},
+    {n:'Torsk eller fiskekaker 500g',q:'https://meny.no/varer/fisk-skalldyr/fisk/torsk',f:'fw'},
   ]},
   {cat:'Kylling',items:[
-    {n:'Kyllingfilet 900g',q:'https://meny.no/varer/kjott-paalegg-og-egg/kylling-og-fjarkre',f:'fw'},
+    {n:'Kyllinglår 4 stk',q:'https://meny.no/varer/kjott-paalegg-og-egg/kylling-og-fjarkre',f:'fw'},
   ]},
   {cat:'Meieri og egg',items:[
     {n:'Lettmelk 0,5% Tine 1l x 3',q:'https://meny.no/varer/meieri-og-egg/melk',f:'fw'},
-    {n:'Smor Tine 75g',q:'https://meny.no/varer/meieri-og-egg/smor-og-margarin',f:'fw'},
-    {n:'Parmesan revet',q:'https://meny.no/varer/meieri-og-egg/ost',f:'fw'},
-    {n:'Cottage cheese 400g',q:'https://meny.no/varer/meieri-og-egg/ost',f:'fw'},
+    {n:'Egg 12 stk',q:'https://meny.no/varer/meieri-og-egg/egg',f:'fw'},
+    {n:'Fetaost 100g',q:'https://meny.no/varer/meieri-og-egg/ost',f:'fw'},
+    {n:'Mozzarella 125g',q:'https://meny.no/varer/meieri-og-egg/ost',f:'fw'},
+    {n:'Majones',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
   ]},
   {cat:'Frukt og gronnsaker',items:[
-    {n:'Mango 1 stk',q:'https://meny.no/varer/frukt-og-gront/frukt',f:'fw'},
-    {n:'Sotpotet 2 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
-    {n:'Poteter 1,5 kg',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
-    {n:'Gulrot 500g',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Paprika 5 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Squash 2 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
     {n:'Lok 4 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
     {n:'Hvitlok',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
-    {n:'Paprika 3 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
     {n:'Sitron 3 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
-    {n:'Selleri 2 stenger',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
-    {n:'Varlok (bunt)',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
-    {n:'Persille fersk',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
-    {n:'Salat og tomat (til taco)',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Asparges 1 bunt',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Hodekål 1/4',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Gulrot 2 stk',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Poteter 800g',q:'https://meny.no/varer/frukt-og-gront/gronnsaker',f:'fw'},
+    {n:'Fersk spinat 100g',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
+    {n:'Fersk basilikum',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
+    {n:'Fersk dill',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
+    {n:'Salat (til omelett)',q:'https://meny.no/varer/frukt-og-gront/salat-og-urter',f:'fw'},
   ]},
   {cat:'Torrvarer og hermetikk',items:[
     {n:'Pasta 400g',q:'https://meny.no/varer/torvarer-og-bakervarer/pasta-og-ris/pasta',f:'fw'},
-    {n:'Pasta (liten type, til suppe) 200g',q:'https://meny.no/varer/torvarer-og-bakervarer/pasta-og-ris/pasta',f:'fw'},
-    {n:'Rode linser 300g',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
-    {n:'Hermetiske tomater x 4 boks',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
-    {n:'Hermetiske kikerter 1 boks',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
-    {n:'Eggnudler 300g',q:'https://meny.no/varer/torvarer-og-bakervarer/pasta-og-ris/pasta',f:'fw'},
-    {n:'Soyasaus',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
-    {n:'Sesamolje',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
-    {n:'Tacokrydder',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fw'},
-    {n:'Spisskummen (malt)',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
-    {n:'Paprikapulver',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
+    {n:'Couscous 300g',q:'https://meny.no/varer/torvarer-og-bakervarer/pasta-og-ris/ris',f:'fw'},
+    {n:'Hermetiske tomater x 3 boks',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
+    {n:'Mais 1 boks',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
+    {n:'Erter frossen 100g',q:'https://meny.no/varer/fryst/gronnsaker',f:'fw'},
+    {n:'Oregano (torr)',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
     {n:'Timian (torr)',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
     {n:'Olivenolje',q:'https://meny.no/varer/torvarer-og-bakervarer/krydder-og-smaker',f:'fm'},
     {n:'Kyllingbuljong',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fm'},
-    {n:'Kapers (til torsk)',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fm'},
+    {n:'Hvetemel (til pizzadeig)',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fm'},
+    {n:'Gjerpakke',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fm'},
   ]},
   {cat:'Brod',items:[
-    {n:'Grovt brod',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
-    {n:'Tacoskjell eller lomper',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
+    {n:'Grovt brod',q:'https://meny.no/varer/brod-og-bakervarer/brod',f:'fw'},
+    {n:'Burgerbrød 4 stk',q:'https://meny.no/varer/brod-og-bakervarer/brod',f:'fw'},
   ]},
 ];
 
@@ -248,7 +245,7 @@ var FIXED = [
     {n:'Bringebrsyltetoy',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fm'},
   ]},
   {cat:'Brod og knekkebroed',items:[
-    {n:'Grovt brod',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fw'},
+    {n:'Grovt brod',q:'https://meny.no/varer/brod-og-bakervarer/brod',f:'fw'},
     {n:'Knekkebroed',q:'https://meny.no/varer/torvarer-og-bakervarer/hermetikk',f:'fb'},
   ]},
   {cat:'Annet',items:[
@@ -263,14 +260,14 @@ var FIXED = [
 ];
 
 document.getElementById('ws').innerHTML =
-  '<strong>Uke 24 &middot; 6&ndash;12. juni</strong><br>' +
-  '&#x1F99E; <strong>Lor 6/6:</strong> Taco med scampi og mango - sykemelding<br>' +
-  '&#x1F41F; <strong>Son 7/6:</strong> Ovnsbakt torsk med sitronsmor - gjester!<br>' +
-  '&#x1F372; <strong>Man 8/6:</strong> Minestrone - lett og god<br>' +
-  '&#x1F357; <strong>Tir 9/6:</strong> Kyllingwok med nudler<br>' +
-  '&#x1F33F; <strong>Ons 10/6:</strong> Linsegryte med hermetiske tomater<br>' +
-  '&#x1F35D; <strong>Tor 11/6:</strong> Pasta med kylling, parmesan og sitron<br>' +
-  '&#x1F41F; <strong>Fre 12/6:</strong> Laks med ovnsbakte gronnsaker';
+  '<strong>Uke 25 &middot; 14&ndash;20. juni</strong><br>' +
+  '&#x1F355; <strong>Lor 14/6:</strong> Hjemmelaget pizza med mozzarella og paprika<br>' +
+  '&#x1F955; <strong>Son 15/6:</strong> Gronnsaksfrittata med squash og fetaost<br>' +
+  '&#x1F345; <strong>Man 16/6:</strong> Tomatsuppe med basilikum og grovt brod<br>' +
+  '&#x1F373; <strong>Tir 17/6:</strong> Omelett med asparges og erter - rask!<br>' +
+  '&#x1F357; <strong>Ons 18/6:</strong> Kyllinglår med grillede gronnsaker og couscous<br>' +
+  '&#x1F35D; <strong>Tor 19/6:</strong> Pasta med laks, sitron og spinat<br>' +
+  '&#x1F354; <strong>Fre 20/6:</strong> Fiskeburger med coleslaw og ovnsfrites';
 
 var chk = '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 var fLabel = {fw:'Ukentlig',fb:'2 uker',fm:'Manedlig',ft:'Hver 3. uke'};
